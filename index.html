@@ -1,0 +1,30 @@
+<!DOCTYPE html> <!--선언-->
+<html lang="en"> <!--문서 언어 설정-->
+
+<head>
+  <meta charset="utf-8"> <!--문자 인코딩 설정-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+
+  <title>Counter</title> <!--웹페이지 제목 설정-->
+  <link rel="stylesheet" type="text/css" href="app.css"> <!--css파일 링크-->
+</head>
+
+<body onload="onload()"><!--웹페이지 본문 시작-->
+  <div class="container">
+    <div id="value" class="counter">0</div>
+    <input id="inputbox" class="input" />
+    <div class="btnGroup">
+
+      <button id="undoButton" class="btn" disabled>Undo</button> <!--class = 속성-->
+      <button id="addButton" class="btn">+</button> <!-- <button id="undoButton" class="btn">Undo</button> -->
+      <button id="subButton" class="btn">-</button>
+      <button id="redoButton" class="btn" disabled>Redo</button> <!-- <button id="redoButton" class="btn">Redo</button> -->
+      
+    </div>
+  </div>
+</body>
+
+<script src="app.js"></script>
+
+</html>
