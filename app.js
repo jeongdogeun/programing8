@@ -1,6 +1,7 @@
 let result = document.getElementById('value'); // 계산결과를 화면에 표시
-let total = 0; // 계산의 현재 값 저장, 0 = 초기 값
+let total = 0 // 계산의 현재 값 저장, 0 = 초기 값
 let historyStack = []; // Undo와 Redo를 위한 통합 스택, 각 계산 단계에서 total 값 기록
+let count = 0
 
 const undoButton = document.getElementById('undoButton'),
   addButton = document.getElementById('addButton'),
@@ -15,16 +16,17 @@ function onload() { // 기능 본문 시작
   subButton.onclick = handleClick;
   redoButton.onclick = handleClick;
 }
-
+//array.length()
 // ===== handleClick ===== //
 function handleClick(event) { // event : 버튼 클릭
   const clickedButtonId = event.target.id; // 클릭된 버튼의 ID를 가져와서 어떤 버튼이 클릭되었는지 확인
 
   if (clickedButtonId === 'addButton' || clickedButtonId === 'subButton') {
-    const inputNumber = parseFloat(inputValue.value);
+    
+    const inputNumber = parseFloat(inputValue.value); //+,- 버튼을 누르면 값을 정수값으로 출력
     if (!isNaN(inputNumber)) {
       // 새 작업이 발생하면 이전 redo 기록을 모두 제거
-      historyStack = historyStack.filter(item => item.action !== 'redo');
+      //historyStack = historyStack.filter(item => item.action !== 'redo');
 
       // 현재 상태를 스택에 저장
       historyStack.push({ action: 'calculate', value: total }); //전체에 값에 계산 추가//
@@ -35,10 +37,10 @@ function handleClick(event) { // event : 버튼 클릭
         total -= inputNumber; // 입력 숫자를 뺌
       }
 
-      result.textContent = total; // 계산된 값 표시
+      result.innerText = total // 계산된 값 표시
       inputValue.value = ''; // 입력 필드 비우기
     } else {
-      inputValue.value = ''; // 유효하지 않은 숫자가 입력된 경우 필드 비우기
+      inputValue.value = 's'; // 유효하지 않은 숫자가 입력된 경우 필드 비우기
     }
   }
 
@@ -69,7 +71,7 @@ function handleClick(event) { // event : 버튼 클릭
     }
   }
 
-  updateButtonStates(); // 버튼 상태 업데이트
+  updateButtonStates() // 버튼 상태 업데이트
 }
 
 // ===== updateButtonStates ===== //
